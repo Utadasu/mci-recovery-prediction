@@ -1,0 +1,278 @@
+{
+  "base_path": "/root/autodl-tmp/DATA_MCI/test_data",
+  "structure": {
+    "base": {
+      "type": "directory",
+      "name": "test_data",
+      "dirs": [
+        "123-AD-MRI",
+        "123-CN-MRI"
+      ],
+      "files": [
+        "final_AD_updated.xlsx",
+        "final_CN_updated.xlsx"
+      ],
+      "files_count": 2,
+      "subdirs": {
+        "123-AD-MRI": {
+          "type": "directory",
+          "name": "123-AD-MRI",
+          "dirs": [
+            "ADfinalCSF",
+            "ADfinalGREY",
+            "ADfinalWHITE",
+            "ADfinalWM"
+          ],
+          "files_count": 0
+        },
+        "123-CN-MRI": {
+          "type": "directory",
+          "name": "123-CN-MRI",
+          "dirs": [
+            "CNfinalCSF",
+            "CNfinalGREY",
+            "CNfinalWHITE",
+            "CNfinalWM"
+          ],
+          "files_count": 0
+        }
+      }
+    },
+    "AD": {
+      "type": "directory",
+      "name": "123-AD-MRI",
+      "dirs": [
+        "ADfinalCSF",
+        "ADfinalGREY",
+        "ADfinalWHITE",
+        "ADfinalWM"
+      ],
+      "files_count": 0,
+      "subdirs": {
+        "ADfinalCSF": {
+          "type": "directory",
+          "name": "ADfinalCSF",
+          "dirs": [],
+          "files": [
+            "mwp3MRI_006_S_4867_2012-08-07_10_36_45.0.nii",
+            "mwp3MRI_002_S_0619_2006-06-01_19_48_28.0.nii",
+            "mwp3MRI_006_S_6689_2019-02-27_09_43_41.0.nii",
+            "mwp3MRI_002_S_0816_2006-08-30_12_06_38.0.nii",
+            "mwp3MRI_007_S_0316_2006-03-29_15_03_20.0.nii"
+          ],
+          "files_count": 414,
+          "files_truncated": true,
+          "subdirs": {}
+        },
+        "ADfinalGREY": {
+          "type": "directory",
+          "name": "ADfinalGREY",
+          "dirs": [],
+          "files": [
+            "mwp1MRI_006_S_4867_2012-08-07_10_36_45.0.nii",
+            "mwp1MRI_002_S_0619_2006-06-01_19_48_28.0.nii",
+            "mwp1MRI_006_S_6689_2019-02-27_09_43_41.0.nii",
+            "mwp1MRI_002_S_0816_2006-08-30_12_06_38.0.nii",
+            "mwp1MRI_007_S_0316_2006-03-29_15_03_20.0.nii"
+          ],
+          "files_count": 414,
+          "files_truncated": true,
+          "subdirs": {}
+        },
+        "ADfinalWHITE": {
+          "type": "directory",
+          "name": "ADfinalWHITE",
+          "dirs": [],
+          "files": [
+            "mwp2MRI_006_S_4867_2012-08-07_10_36_45.0.nii",
+            "mwp2MRI_002_S_0619_2006-06-01_19_48_28.0.nii",
+            "mwp2MRI_006_S_6689_2019-02-27_09_43_41.0.nii",
+            "mwp2MRI_002_S_0816_2006-08-30_12_06_38.0.nii",
+            "mwp2MRI_007_S_0316_2006-03-29_15_03_20.0.nii"
+          ],
+          "files_count": 414,
+          "files_truncated": true,
+          "subdirs": {}
+        },
+        "ADfinalWM": {
+          "type": "directory",
+          "name": "ADfinalWM",
+          "dirs": [],
+          "files": [
+            "wmMRI_006_S_4867_2012-08-07_10_36_45.0.nii",
+            "wmMRI_002_S_0619_2006-06-01_19_48_28.0.nii",
+            "wmMRI_006_S_6689_2019-02-27_09_43_41.0.nii",
+            "wmMRI_002_S_0816_2006-08-30_12_06_38.0.nii",
+            "wmMRI_007_S_0316_2006-03-29_15_03_20.0.nii"
+          ],
+          "files_count": 414,
+          "files_truncated": true,
+          "subdirs": {}
+        }
+      }
+    },
+    "AD_CSF": {
+      "type": "directory",
+      "name": "ADfinalCSF",
+      "dirs": [],
+      "files": [
+        "mwp3MRI_006_S_4867_2012-08-07_10_36_45.0.nii",
+        "mwp3MRI_002_S_0619_2006-06-01_19_48_28.0.nii",
+        "mwp3MRI_006_S_6689_2019-02-27_09_43_41.0.nii",
+        "mwp3MRI_002_S_0816_2006-08-30_12_06_38.0.nii",
+        "mwp3MRI_007_S_0316_2006-03-29_15_03_20.0.nii"
+      ],
+      "files_count": 414,
+      "files_truncated": true,
+      "subdirs": {}
+    },
+    "AD_GREY": {
+      "type": "directory",
+      "name": "ADfinalGREY",
+      "dirs": [],
+      "files": [
+        "mwp1MRI_006_S_4867_2012-08-07_10_36_45.0.nii",
+        "mwp1MRI_002_S_0619_2006-06-01_19_48_28.0.nii",
+        "mwp1MRI_006_S_6689_2019-02-27_09_43_41.0.nii",
+        "mwp1MRI_002_S_0816_2006-08-30_12_06_38.0.nii",
+        "mwp1MRI_007_S_0316_2006-03-29_15_03_20.0.nii"
+      ],
+      "files_count": 414,
+      "files_truncated": true,
+      "subdirs": {}
+    },
+    "AD_WHITE": {
+      "type": "directory",
+      "name": "ADfinalWHITE",
+      "dirs": [],
+      "files": [
+        "mwp2MRI_006_S_4867_2012-08-07_10_36_45.0.nii",
+        "mwp2MRI_002_S_0619_2006-06-01_19_48_28.0.nii",
+        "mwp2MRI_006_S_6689_2019-02-27_09_43_41.0.nii",
+        "mwp2MRI_002_S_0816_2006-08-30_12_06_38.0.nii",
+        "mwp2MRI_007_S_0316_2006-03-29_15_03_20.0.nii"
+      ],
+      "files_count": 414,
+      "files_truncated": true,
+      "subdirs": {}
+    },
+    "CN": {
+      "type": "directory",
+      "name": "123-CN-MRI",
+      "dirs": [
+        "CNfinalCSF",
+        "CNfinalGREY",
+        "CNfinalWHITE",
+        "CNfinalWM"
+      ],
+      "files_count": 0,
+      "subdirs": {
+        "CNfinalCSF": {
+          "type": "directory",
+          "name": "CNfinalCSF",
+          "dirs": [],
+          "files": [
+            "mwp3MRI_007_S_4488_2012-01-31_08_07_33.0.nii",
+            "mwp3MRI_002_S_1280_2007-02-13_07_59_35.0.nii",
+            "mwp3MRI_007_S_4620_2012-03-28_08_00_26.0.nii",
+            "mwp3MRI_002_S_4264_2011-10-05_17_44_37.0.nii",
+            "mwp3MRI_007_S_6323_2018-04-17_15_46_47.0.nii"
+          ],
+          "files_count": 414,
+          "files_truncated": true,
+          "subdirs": {}
+        },
+        "CNfinalGREY": {
+          "type": "directory",
+          "name": "CNfinalGREY",
+          "dirs": [],
+          "files": [
+            "mwp1MRI_007_S_4488_2012-01-31_08_07_33.0.nii",
+            "mwp1MRI_002_S_1280_2007-02-13_07_59_35.0.nii",
+            "mwp1MRI_007_S_4620_2012-03-28_08_00_26.0.nii",
+            "mwp1MRI_002_S_4264_2011-10-05_17_44_37.0.nii",
+            "mwp1MRI_007_S_6323_2018-04-17_15_46_47.0.nii"
+          ],
+          "files_count": 414,
+          "files_truncated": true,
+          "subdirs": {}
+        },
+        "CNfinalWHITE": {
+          "type": "directory",
+          "name": "CNfinalWHITE",
+          "dirs": [],
+          "files": [
+            "mwp2MRI_007_S_4488_2012-01-31_08_07_33.0.nii",
+            "mwp2MRI_002_S_1280_2007-02-13_07_59_35.0.nii",
+            "mwp2MRI_007_S_4620_2012-03-28_08_00_26.0.nii",
+            "mwp2MRI_002_S_4264_2011-10-05_17_44_37.0.nii",
+            "mwp2MRI_007_S_6323_2018-04-17_15_46_47.0.nii"
+          ],
+          "files_count": 414,
+          "files_truncated": true,
+          "subdirs": {}
+        },
+        "CNfinalWM": {
+          "type": "directory",
+          "name": "CNfinalWM",
+          "dirs": [],
+          "files": [
+            "wmMRI_007_S_4488_2012-01-31_08_07_33.0.nii",
+            "wmMRI_002_S_1280_2007-02-13_07_59_35.0.nii",
+            "wmMRI_007_S_4620_2012-03-28_08_00_26.0.nii",
+            "wmMRI_002_S_4264_2011-10-05_17_44_37.0.nii",
+            "wmMRI_007_S_6323_2018-04-17_15_46_47.0.nii"
+          ],
+          "files_count": 414,
+          "files_truncated": true,
+          "subdirs": {}
+        }
+      }
+    },
+    "CN_CSF": {
+      "type": "directory",
+      "name": "CNfinalCSF",
+      "dirs": [],
+      "files": [
+        "mwp3MRI_007_S_4488_2012-01-31_08_07_33.0.nii",
+        "mwp3MRI_002_S_1280_2007-02-13_07_59_35.0.nii",
+        "mwp3MRI_007_S_4620_2012-03-28_08_00_26.0.nii",
+        "mwp3MRI_002_S_4264_2011-10-05_17_44_37.0.nii",
+        "mwp3MRI_007_S_6323_2018-04-17_15_46_47.0.nii"
+      ],
+      "files_count": 414,
+      "files_truncated": true,
+      "subdirs": {}
+    },
+    "CN_GREY": {
+      "type": "directory",
+      "name": "CNfinalGREY",
+      "dirs": [],
+      "files": [
+        "mwp1MRI_007_S_4488_2012-01-31_08_07_33.0.nii",
+        "mwp1MRI_002_S_1280_2007-02-13_07_59_35.0.nii",
+        "mwp1MRI_007_S_4620_2012-03-28_08_00_26.0.nii",
+        "mwp1MRI_002_S_4264_2011-10-05_17_44_37.0.nii",
+        "mwp1MRI_007_S_6323_2018-04-17_15_46_47.0.nii"
+      ],
+      "files_count": 414,
+      "files_truncated": true,
+      "subdirs": {}
+    },
+    "CN_WHITE": {
+      "type": "directory",
+      "name": "CNfinalWHITE",
+      "dirs": [],
+      "files": [
+        "mwp2MRI_007_S_4488_2012-01-31_08_07_33.0.nii",
+        "mwp2MRI_002_S_1280_2007-02-13_07_59_35.0.nii",
+        "mwp2MRI_007_S_4620_2012-03-28_08_00_26.0.nii",
+        "mwp2MRI_002_S_4264_2011-10-05_17_44_37.0.nii",
+        "mwp2MRI_007_S_6323_2018-04-17_15_46_47.0.nii"
+      ],
+      "files_count": 414,
+      "files_truncated": true,
+      "subdirs": {}
+    }
+  }
+}

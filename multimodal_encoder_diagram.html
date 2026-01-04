@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿尔茨海默病多模态诊断系统完整流程</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        :root {
+            --stage1-bg: #e7f5ff; /* Light Blue */
+            --stage2-bg: #f3e8ff; /* Light Purple */
+            --stage3-bg: #e6fcf5; /* Light Green */
+            --arrow-color: #555;
+            --feature-bg: #f8f9fa;
+            --feature-border: #dee2e6;
+            --component-bg: #ffffff;
+            --component-border: #ced4da;
+            --text-color: #343a40;
+            --title-color: #212529;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: var(--text-color);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .main-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: var(--title-color);
+        }
+        .main-container {
+            width: 100%;
+            max-width: 1800px;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            gap: 20px;
+        }
+        .stage {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e0e0e0;
+        }
+        .stage-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            margin: 0 0 25px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(0,0,0,0.08);
+            width: 100%;
+            text-align: center;
+            color: var(--title-color);
+        }
+        
+        #stage-pretrain { background-color: var(--stage1-bg); }
+        #stage-adapt { background-color: var(--stage2-bg); }
+        #stage-predict { background-color: var(--stage3-bg); }
+        
+        .component {
+            border: 1px solid var(--component-border);
+            border-radius: 8px;
+            padding: 12px 18px;
+            text-align: center;
+            margin: 10px 0;
+            background-color: var(--component-bg);
+            width: 90%;
+            position: relative;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .feature-stack {
+            height: 50px;
+            width: 180px;
+            background: var(--feature-bg);
+            border: 1px solid var(--feature-border);
+            border-radius: 8px;
+            position: relative;
+            margin: 25px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #495057;
+        }
+        .feature-stack::before, .feature-stack::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--feature-bg);
+            border: 1px solid var(--feature-border);
+            border-radius: 8px;
+            z-index: -1;
+        }
+        .feature-stack::before { transform: translate(4px, -4px); }
+        .feature-stack::after { transform: translate(8px, -8px); }
+
+        .output-box {
+            border: 2px dashed var(--component-border);
+            padding: 15px;
+            border-radius: 8px;
+            width: 95%;
+            text-align: center;
+            font-weight: 600;
+            margin-top: auto;
+            color: var(--text-color);
+            background-color: #fff;
+        }
+        
+        .vertical-arrow { display: none; }
+
+        #arrow-svg {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none; z-index: 10;
+        }
+        .arrow {
+            stroke: var(--arrow-color); stroke-width: 2;
+            fill: none; marker-end: url(#arrowhead);
+        }
+        .arrow.dashed { stroke-dasharray: 8, 5; }
+    </style>
+</head>
+<body>
+
+<div class="main-title"><h1>阿尔茨海默病多模态诊断系统完整流程</h1></div>
+<div class="main-container" id="container">
+    <!-- STAGE 1: PRE-TRAINING -->
+    <div class="stage" id="stage-pretrain">
+        <div class="stage-title">阶段1: 源域特征预训练 (AD/CN)</div>
+        <div class="module" id="visual-encoder">
+            <div class="component input" id="visual-input"><i class="fas fa-brain"></i> 3D MRI 图像</div>
+            <div class="component" id="visual-model"><i class="fas fa-cogs"></i> 改进的3D ResNet+CBAM</div>
+        </div>
+        <div class="feature-stack" id="visual-features"><i class="fas fa-layer-group"></i> 图像特征</div>
+        <div class="module" id="knowledge-encoder">
+            <div class="component input" id="text-input"><i class="fas fa-file-medical-alt"></i> 临床文本与评分</div>
+            <div class="component" id="text-model"><i class="fas fa-robot"></i> BERT+认知处理器</div>
+        </div>
+        <div class="feature-stack" id="text-features"><i class="fas fa-align-left"></i> 文本特征</div>
+        <div class="component" id="fusion-align"><i class="fas fa-link"></i> InfoNCE 对比学习</div>
+        <div class="output-box" id="pretrain-output"><i class="fas fa-star"></i> Pre-trained Feature Extractor</div>
+    </div>
+    
+    <!-- STAGE 2: DOMAIN ADAPTATION -->
+    <div class="stage" id="stage-adapt">
+        <div class="stage-title">阶段2: 对抗域适应</div>
+        <div class="component" id="adapt-input-source"><i class="fas fa-database"></i> 源域数据 (AD/CN)</div>
+        <div class="component" id="adapt-input-target"><i class="fas fa-database"></i> 目标域数据 (MCI)</div>
+        <div class="component" id="grl"><i class="fas fa-retweet"></i> 梯度反转层 (GRL)</div>
+        <div class="component" id="discriminator"><i class="fas fa-balance-scale-right"></i> 域判别器</div>
+        <div class="component" id="loss-align"><i class="fas fa-calculator"></i> CORAL + MMD 对齐损失</div>
+        <div class="output-box" id="adapt-output"><i class="fas fa-check-circle"></i> Adapted Feature Extractor</div>
+    </div>
+
+    <!-- STAGE 3: DOWNSTREAM PREDICTION -->
+    <div class="stage" id="stage-predict">
+        <div class="stage-title">阶段3: 下游任务预测 (MCIc/MCInc)</div>
+        <div class="feature-stack" id="predict-input-features"><i class="fas fa-dna"></i> MCIc/MCInc 特征</div>
+        <div class="component" id="classifier"><i class="fas fa-chart-line"></i> 下游分类器 (XGBoost)</div>
+        <div class="component" id="cv"><i class="fas fa-sync-alt"></i> 留一法交叉验证 (LOOCV)</div>
+        <div class="output-box" id="predict-output">
+            <i class="fas fa-chart-bar"></i> MCIc vs MCInc 预测结果
+        </div>
+    </div>
+
+    <svg id="arrow-svg"></svg>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    function debounce(func, wait = 50) {
+        let timeout;
+        return function(...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), wait);
+        };
+    }
+
+    const container = document.getElementById('container');
+    const svg = document.getElementById('arrow-svg');
+
+    function getElRect(el, containerRect) {
+        if (!el) return null;
+        const rect = el.getBoundingClientRect();
+        if (rect.width === 0 && rect.height === 0) return null;
+        return {
+            x: rect.left - containerRect.left,
+            y: rect.top - containerRect.top,
+            left: rect.left - containerRect.left,
+            right: rect.right - containerRect.left,
+            top: rect.top - containerRect.top,
+            bottom: rect.bottom - containerRect.top,
+            width: rect.width,
+            height: rect.height,
+            cx: rect.left - containerRect.left + rect.width / 2,
+            cy: rect.top - containerRect.top + rect.height / 2,
+        };
+    }
+
+    function drawArrow(p1, p2, options = {}) {
+        const { cx1=0, cy1=0, cx2=0, cy2=0, dashed=false } = options;
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        const d = `M ${p1.x},${p1.y} C ${p1.x + cx1},${p1.y + cy1} ${p2.x + cx2},${p2.y + cy2} ${p2.x},${p2.y}`;
+        path.setAttribute('d', d);
+        path.setAttribute('class', `arrow ${dashed ? 'dashed' : ''}`);
+        svg.appendChild(path);
+    }
+    
+    function connectElements(fromEl, toEl, options = {}) {
+        if (!fromEl || !toEl) return;
+        
+        const p1 = { x: fromEl.cx, y: fromEl.bottom };
+        const p2 = { x: toEl.cx, y: toEl.top };
+        
+        let cx1 = 0, cy1 = 0, cx2 = 0, cy2 = 0;
+        const vOffset = Math.max(20, (p2.y - p1.y) * 0.4);
+        cy1 = vOffset;
+        cy2 = -vOffset;
+
+        drawArrow(p1, p2, { cx1, cy1, cx2, cy2, ...options });
+    }
+
+    function drawAllArrows() {
+        svg.innerHTML = `
+            <defs>
+                <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                    <path d="M0,0 L8,3 L0,6 Z" fill="${getComputedStyle(document.documentElement).getPropertyValue('--arrow-color').trim()}" />
+                </marker>
+            </defs>
+        `;
+
+        const containerRect = container.getBoundingClientRect();
+        if (!containerRect) return;
+
+        const elements = {};
+        const allIds = ['visual-input', 'visual-model', 'visual-features', 'text-input', 'text-model', 'text-features', 'fusion-align', 'pretrain-output', 'adapt-input-source', 'adapt-input-target', 'grl', 'discriminator', 'loss-align', 'adapt-output', 'predict-input-features', 'classifier', 'cv', 'predict-output'];
+        
+        allIds.forEach(id => {
+            const el = document.getElementById(id);
+            elements[id] = getElRect(el, containerRect);
+        });
+
+        // STAGE 1
+        connectElements(elements['visual-input'], elements['visual-model']);
+        connectElements(elements['visual-model'], elements['visual-features']);
+        connectElements(elements['text-input'], elements['text-model']);
+        connectElements(elements['text-model'], elements['text-features']);
+        connectElements(elements['visual-features'], elements['fusion-align']);
+        connectElements(elements['text-features'], elements['fusion-align']);
+        connectElements(elements['fusion-align'], elements['pretrain-output']);
+
+        // STAGE 2
+        connectElements(elements['adapt-input-source'], elements['grl']);
+        connectElements(elements['adapt-input-target'], elements['grl']);
+        connectElements(elements['grl'], elements['discriminator']);
+        connectElements(elements['discriminator'], elements['loss-align']);
+        connectElements(elements['loss-align'], elements['adapt-output']);
+        
+        // INTER-STAGE
+        if (elements['pretrain-output'] && elements['grl']) {
+            const p1 = { x: elements['pretrain-output'].right, y: elements['pretrain-output'].cy };
+            const p2 = { x: elements['grl'].left, y: elements['grl'].cy };
+            const hOffset = Math.max(50, (p2.x - p1.x) * 0.4);
+            drawArrow(p1, p2, { cx1: hOffset, cx2: -hOffset });
+        }
+        if (elements['adapt-output'] && elements['predict-input-features']) {
+            const p1 = { x: elements['adapt-output'].right, y: elements['adapt-output'].cy };
+            const p2 = { x: elements['predict-input-features'].left, y: elements['predict-input-features'].cy };
+            const hOffset = Math.max(50, (p2.x - p1.x) * 0.4);
+            drawArrow(p1, p2, { cx1: hOffset, cx2: -hOffset });
+        }
+
+        // FEEDBACK LOOP
+        if (elements['discriminator'] && elements['grl']) {
+            const p1 = { x: elements['discriminator'].left, y: elements['discriminator'].cy };
+            const p2 = { x: elements['grl'].left, y: elements['grl'].cy };
+            const offset = 80;
+            drawArrow(p1, p2, { cx1: -offset, cy1: -offset/2, cx2: -offset, cy2: offset/2, dashed: true });
+        }
+        
+        // STAGE 3
+        connectElements(elements['predict-input-features'], elements['classifier']);
+        connectElements(elements['classifier'], elements['cv']);
+        connectElements(elements['cv'], elements['predict-output']);
+    }
+    
+    const debouncedDraw = debounce(drawAllArrows, 100);
+    setTimeout(() => {
+        drawAllArrows();
+        window.addEventListener('resize', debouncedDraw);
+    }, 250); // Increased timeout for complex layouts
+});
+</script>
+
+</body>
+</html> 
